@@ -10,8 +10,8 @@ import numpy as np
 
 from stocktinker.stock import Stock
 
-from ..app import app
-from ..app import stock_cache
+from stocktinker.dashboard.app import app
+from stocktinker.dashboard.app import stock_cache
 
 def get_available_stock_options():
     options = []

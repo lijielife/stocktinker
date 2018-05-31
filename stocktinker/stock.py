@@ -358,7 +358,7 @@ class Stock():
     def income(self):
         ''' property for income report dataframe '''
         if self._income is None:
-            self.income = self._load_report_csv_to_df('income')
+            self._income = self._load_report_csv_to_df('income')
         return self._income
 
     @income.setter
@@ -382,7 +382,7 @@ class Stock():
     def balancesheet(self):
         ''' property for balancesheet report dataframe '''
         if self._balancesheet is None:
-            self.balancesheet = self._load_report_csv_to_df('balancesheet')
+            self._balancesheet = self._load_report_csv_to_df('balancesheet')
         return self._balancesheet
 
     @balancesheet.setter
@@ -418,29 +418,29 @@ class Stock():
                             report_type+ "_%s.csv" % self.symbol)
 
     def add_dividends_ps_growth(self):
-        self.ratios['dividends-ps-growth'] = self.ratios['dividends-%s' % self.currency].pct_change()
+        self._ratios['dividends-ps-growth'] = self._ratios['dividends-%s' % self.currency].pct_change()
 
     def add_book_value_ps_growth(self):
-        self.ratios['book-value-ps-growth'] = self.ratios['book-value-per-share-%s' % self.currency].pct_change()
+        self._ratios['book-value-ps-growth'] = self._ratios['book-value-per-share-%s' % self.currency].pct_change()
 
     def add_earnings_ps_growth(self):
-        self.ratios['earnings-ps-growth'] = self.ratios['earnings-per-share-%s' % self.currency].pct_change()
+        self._ratios['earnings-ps-growth'] = self._ratios['earnings-per-share-%s' % self.currency].pct_change()
 
     def add_operating_cashflow_ps_growth(self):
-        self.ratios['operating-cashflow-per-share-%s' % self.currency] = self.ratios['operating-cash-flow-%s' % self.currency] / self.ratios['shares']
-        self.ratios['operating-cashflow-ps-growth'] = (self.ratios['operating-cash-flow-%s' % self.currency] / self.ratios['shares']).pct_change()
+        self._ratios['operating-cashflow-per-share-%s' % self.currency] = self._ratios['operating-cash-flow-%s' % self.currency] / self.ratios['shares']
+        self._ratios['operating-cashflow-ps-growth'] = (self._ratios['operating-cash-flow-%s' % self.currency] / self._ratios['shares']).pct_change()
 
     def add_long_term_debt_ps_growth(self):
-        self.ratios['long-term-debt-ps-growth'] = (self.ratios['long-term-debt'] / self.ratios['shares']).pct_change()
-        self.ratios['long-term-debt-ps'] = self.ratios['long-term-debt'] / self.ratios['shares']
+        self.ratios['long-term-debt-ps-growth'] = (self.ratios['long-term-debt'] / self._ratios['shares']).pct_change()
+        self.ratios['long-term-debt-ps'] = self.ratios['long-term-debt'] / self._ratios['shares']
 
     def add_short_term_debt_ps_growth(self):
-        self.ratios['short-term-debt-ps-growth'] = (self.ratios['short-term-debt'] / self.ratios['shares']).pct_change()
-        self.ratios['short-term-debt-ps'] = self.ratios['short-term-debt'] / self.ratios['shares']
+        self._ratios['short-term-debt-ps-growth'] = (self._ratios['short-term-debt'] / self._ratios['shares']).pct_change()
+        self._ratios['short-term-debt-ps'] = self._ratios['short-term-debt'] / self._ratios['shares']
 
     def add_revenue_ps_growth(self):
-        self.ratios['revenue-per-share-%s' % self.currency] = self.ratios['revenue-%s' % self.currency] / self.ratios['shares']
-        self.ratios['revenue-ps-growth'] = (self.ratios['revenue-%s' % self.currency] / self.ratios['shares']).pct_change()
+        self._ratios['revenue-per-share-%s' % self.currency] = self._ratios['revenue-%s' % self.currency] / self._ratios['shares']
+        self._ratios['revenue-ps-growth'] = (self._ratios['revenue-%s' % self.currency] / self._ratios['shares']).pct_change()
 
     @property
     def historic_prices(self):
