@@ -1,5 +1,4 @@
 from urllib.request import urlopen
-import lxml
 
 import dash
 from dash.dependencies import Input, Output, State
