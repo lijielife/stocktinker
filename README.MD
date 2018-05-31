@@ -20,12 +20,7 @@ symbol in addition to a summary table for all selected tickers.
 The dashboard uses plotly and dash, which currently need a fixed set of versions
 to work together as intended (see [dash installation isntructions](https://plot.ly/dash/installation))
 
-    pip install dash==0.19.0  # The core dash backend
-    pip install dash-renderer==0.11.1  # The dash front-end
-    pip install dash-html-components==0.8.0  # HTML components
-    pip install dash-core-components==0.14.0  # Supercharged components
-    pip install plotly --upgrade  # Latest Plotly graphing library
-
+install requirements.txt
 ### Usage
 The script `start_tinker_dashboard.py` should be available after instlling this
 package and dash. Running it creates a local server instance which can be
